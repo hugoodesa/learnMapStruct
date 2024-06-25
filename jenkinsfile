@@ -1,15 +1,15 @@
 pipeline {
     agent any
 
-    tools {
-        maven "local_maven"
-        java "local_java"
-    }
+     tools {
+        maven 'local_maven'
+        jdk 'local_java'
+     }
 
     stages {
         stage('Build') {
             steps {
-                echo "start"
+                echo 'start'
             }
 
             stage('SonarQube Analysis') {
@@ -21,11 +21,6 @@ pipeline {
                 }
             }
 
-            post {
-                success {
-                    echo "done with success"
-                }
-            }
         }
     }
 }
