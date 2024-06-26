@@ -22,7 +22,7 @@ pipeline {
                         mvn clean verify sonar:sonar \
                         -Dsonar.projectKey=learnJenkins \
                         -Dsonar.projectName='learnJenkins' \
-                        -Dsonar.host.url=http://172.18.0.2:9000
+                        -Dsonar.host.url=http://sonar:9000
                     '''
                     echo 'SonarQube Analysis Completed'
                 }
