@@ -30,7 +30,10 @@ pipeline {
         }
 
         stage('Tomcat deploy') {
-            deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://tomcat9:8082')], contextPath: '/var/jenkins_home/workspace/hellowPipeLine/', onFailure: false, war: 'learnMapStruct-0.0.1-SNAPSHOT.jar'
+            steps {
+                echo 'start TOMCAT DEPLOY'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://tomcat9:8082')], contextPath: '/var/jenkins_home/workspace/hellowPipeLine/', onFailure: false, war: 'learnMapStruct-0.0.1-SNAPSHOT.jar'
+            }
         }
         
     }
