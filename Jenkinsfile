@@ -32,7 +32,7 @@ pipeline {
         stage('Tomcat deploy') {
             steps {
                 echo 'start TOMCAT DEPLOY'
-                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://tomcat9:8082')], contextPath: '/var/jenkins_home/workspace/pipelineDev/target/', onFailure: false, war: 'learnMapStruct-0.0.1-SNAPSHOT.jar'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://tomcat9:8082')], contextPath: '/var/jenkins_home/workspace/pipelineDev/target/', onFailure: false, war: 'learnMapStruct-0.0.1-SNAPSHOT.war'
             }
         }
         
