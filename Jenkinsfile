@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'start'
+                echo 'mvn clean install'
             }
         }
 
@@ -22,11 +22,19 @@ pipeline {
                         mvn clean verify sonar:sonar \
                         -Dsonar.projectKey=learnJenkins \
                         -Dsonar.projectName='learnJenkins' \
-                        -Dsonar.host.url=http://172.18.0.2:9000
+                        -Dsonar.host.url=http://sonar:9000
                     '''
                     echo 'SonarQube Analysis Completed'
                 }
             }
         }
+
+        stage('Tomcat deploy') {
+            steps {
+                echo 'start TOMCAT DEPLOY'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://tomcat9:8082')], contextPath: '/var/jenkins_home/workspace/pipelineDev/target/', onFailure: false, war: 'learnMapStruct-0.0.1-SNAPSHOT.jar'
+            }
+        }
+        
     }
 }
