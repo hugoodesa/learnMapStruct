@@ -35,6 +35,13 @@ pipeline {
                 deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://tomcat9:8082')], contextPath: 'target', onFailure: false, war: 'learnMapStruct-0.0.1-SNAPSHOT.war'
             }
         }*/
+
+        stage('Tomcat deploy') {
+            steps {
+                echo 'start TOMCAT DEPLOY'
+                sh 'ls'
+            }
+        }
         
     }
 }
