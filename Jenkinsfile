@@ -28,5 +28,21 @@ pipeline {
                 }
             }
         }
+
+        stage('packaging') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+        
+        stage('transfer to java_machine') {
+            steps {
+                dir('target') {
+                    sh 'ls -al'
+                }
+            }
+        }
+        
+        
     }
 }
