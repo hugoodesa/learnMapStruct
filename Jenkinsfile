@@ -35,14 +35,13 @@ pipeline {
             }
         }
         
-        stage('transfer to java_machine') {
+        stage('generate version') {
             steps {
-                dir('target') {
-                    sh 'ls -al'
-                }
+                tag = VersionNumber projectStartDate: '', versionNumberString: 'BUILDS_ALL_TIME', versionPrefix: 'build', worstResultForIncrement: 'SUCCESS'
+                echo " === TAG === "
+                echo tag
             }
         }
-        
         
     }
 }
