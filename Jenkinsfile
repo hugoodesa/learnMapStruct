@@ -42,6 +42,16 @@ pipeline {
                 echo tag
             }
         }
+
+        stage('dockerizing') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'github', toolName: 'local_docker') {
+                        sh "docker ps"
+                    }
+                 }
+            }
+        }
         
     }
 }
