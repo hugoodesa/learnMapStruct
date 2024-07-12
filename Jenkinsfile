@@ -34,14 +34,6 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        
-        stage('generate version') {
-            steps {
-                tag = VersionNumber projectStartDate: '', versionNumberString: 'BUILDS_ALL_TIME', versionPrefix: 'build', worstResultForIncrement: 'SUCCESS'
-                echo " === TAG === "
-                echo tag
-            }
-        }
 
         stage('dockerizing') {
             steps {
